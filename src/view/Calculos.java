@@ -2,39 +2,39 @@ package view;
 
 
 public class Calculos {
-	private float n1,n2;
+	private double n1,n2;
 	private String operador;
 		
-	public float somar(float n1, float n2) {
+	public double somar(double n1, double n2) {
 		return n1+n2;
 	}
-	public float subtrair(float n1, float n2) {
+	public double subtrair(double n1, double n2) {
 		return n1-n2;
 	}
-	public float multiplicar(float n1, float n2) {
+	public double multiplicar(double n1, double n2) {
 		return n1*n2;
 	}
-	public float dividir(float n1, float n2) {
+	public double dividir(double n1, double n2) {
 		return n1/n2;
 	}
 
-	public float getN1() {
+	public double getN1() {
 		return n1;
 	}
 	
-	public float raizQuadrada(float n1) {
-		return (float) Math.sqrt(n1);
+	public double raizQuadrada(double n1) {
+		return (double) Math.sqrt(n1);
 	}
 
-	public void setN1(float n1) {
+	public void setN1(double n1) {
 		this.n1 = n1;
 	}
 
-	public float getN2() {
+	public double getN2() {
 		return n2;
 	}
 
-	public void setN2(float n2) {
+	public void setN2(double n2) {
 		this.n2 = n2;
 	}
 	public String getOperador() {
@@ -44,4 +44,5 @@ public class Calculos {
 	public void setOperador(String operador) {
 		this.operador = operador;
 	}
+
 }
