@@ -31,6 +31,19 @@ public class TelaPrincipal {
 		});
 	}
 
+	// Remove o ".0" quando o resultado é um número não fracionado
+	public String tiraPontoZero(String str){
+		String semPontoZero="";
+		if(str.endsWith(".0")){
+			semPontoZero = str.substring(0, str.length()-2);
+		} else {
+			semPontoZero = str;
+		}
+		return semPontoZero;
+	}
+
+	String resultado = "";
+
 	/**
 	 * Create the application.
 	 */
@@ -153,7 +166,7 @@ public class TelaPrincipal {
 		JButton btnSoma = new JButton("+");
 		btnSoma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculos.setN1(Float.parseFloat(telaPrincipal.getText()));
+				calculos.setN1(Double.parseDouble(telaPrincipal.getText()));
 				telaPrincipal.setText("");
 				calculos.setOperador("+");
 				
@@ -165,7 +178,7 @@ public class TelaPrincipal {
 		JButton btnSubtracao = new JButton("-");
 		btnSubtracao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculos.setN1(Float.parseFloat(telaPrincipal.getText()));
+				calculos.setN1(Double.parseDouble(telaPrincipal.getText()));
 				telaPrincipal.setText("");
 				calculos.setOperador("-");
 			}
@@ -176,7 +189,7 @@ public class TelaPrincipal {
 		JButton btnMultiplicacao = new JButton("*");
 		btnMultiplicacao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculos.setN1(Float.parseFloat(telaPrincipal.getText()));
+				calculos.setN1(Double.parseDouble(telaPrincipal.getText()));
 				telaPrincipal.setText("");
 				calculos.setOperador("*");
 			}
@@ -187,7 +200,7 @@ public class TelaPrincipal {
 		JButton btnDivisao = new JButton("/");
 		btnDivisao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculos.setN1(Float.parseFloat(telaPrincipal.getText()));
+				calculos.setN1(Double.parseDouble(telaPrincipal.getText()));
 				telaPrincipal.setText("");
 				calculos.setOperador("/");
 			}
@@ -202,16 +215,21 @@ public class TelaPrincipal {
 				
 				switch (calculos.getOperador()) {
 				case "+":
-					telaPrincipal.setText(String.valueOf(calculos.somar(calculos.getN1(), calculos.getN2())));
+					resultado = String.valueOf(calculos.somar(calculos.getN1(), calculos.getN2()));
+					telaPrincipal.setText(tiraPontoZero(resultado));
 					break;
 				case "-":
-					telaPrincipal.setText(String.valueOf(calculos.subtrair(calculos.getN1(), calculos.getN2())));
+					resultado = String.valueOf(calculos.subtrair(calculos.getN1(), calculos.getN2()));
+					telaPrincipal.setText(tiraPontoZero(resultado));
 					break;
 				case "*":
-					telaPrincipal.setText(String.valueOf(calculos.multiplicar(calculos.getN1(), calculos.getN2())));
+					resultado = String.valueOf(calculos.multiplicar(calculos.getN1(), calculos.getN2()));
+					telaPrincipal.setText(tiraPontoZero(resultado));
 					break;
 				case "/":
-					telaPrincipal.setText(String.valueOf(calculos.dividir(calculos.getN1(), calculos.getN2())));
+					resultado = String.valueOf(calculos.dividir(calculos.getN1(), calculos.getN2()));
+					telaPrincipal.setText(tiraPontoZero(resultado));
+					break;
 				default:
 					break;
 				}
@@ -241,8 +259,9 @@ public class TelaPrincipal {
 		JButton btnRaizQuadrada = new JButton("\u221A");
 		btnRaizQuadrada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculos.setN1(Float.parseFloat(telaPrincipal.getText()));
-				telaPrincipal.setText(String.valueOf(calculos.raizQuadrada(calculos.getN1())));
+				calculos.setN1(Double.parseDouble(telaPrincipal.getText()));
+				resultado = String.valueOf(calculos.raizQuadrada(calculos.getN1()));
+				telaPrincipal.setText(tiraPontoZero(resultado));
 			}
 		});
 		btnRaizQuadrada.setBounds(130, 102, 50, 38);
