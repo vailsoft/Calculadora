@@ -6,16 +6,16 @@ public class Calculos {
 	private String operador;
 		
 	public double somar(double n1, double n2) {
-		return n1+n2;
+		return n1+=n2;
 	}
 	public double subtrair(double n1, double n2) {
-		return n1-n2;
+		return n1-=n2;
 	}
 	public double multiplicar(double n1, double n2) {
-		return n1*n2;
+		return n1*=n2;
 	}
 	public double dividir(double n1, double n2) {
-		return n1/n2;
+		return n1/=n2;
 	}
 
 	public double getN1() {
@@ -25,6 +25,11 @@ public class Calculos {
 	public double raizQuadrada(double n1) {
 		return (double) Math.sqrt(n1);
 	}
+
+	public double quadrado(double n1) {
+		return (double) Math.pow(n1,2);
+	}
+
 
 	public void setN1(double n1) {
 		this.n1 = n1;
