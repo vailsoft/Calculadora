@@ -211,7 +211,7 @@ public class TelaPrincipal {
 		JButton btnIgual = new JButton("=");
 		btnIgual.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculos.setN2(Integer.parseInt(telaPrincipal.getText()));
+				calculos.setN2(Float.parseFloat(telaPrincipal.getText()));
 				
 				switch (calculos.getOperador()) {
 				case "+":
@@ -259,8 +259,7 @@ public class TelaPrincipal {
 		JButton btnRaizQuadrada = new JButton("\u221A");
 		btnRaizQuadrada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculos.setN1(Double.parseDouble(telaPrincipal.getText()));
-				resultado = String.valueOf(calculos.raizQuadrada(calculos.getN1()));
+				resultado = String.valueOf(calculos.raizQuadrada(Double.parseDouble(telaPrincipal.getText())));
 				telaPrincipal.setText(tiraPontoZero(resultado));
 			}
 		});
@@ -276,9 +275,17 @@ public class TelaPrincipal {
 		btnPorcentagem.setBounds(70, 102, 50, 38);
 		frmCalculadora.getContentPane().add(btnPorcentagem);
 		
-		JButton btnX = new JButton("x\u00B2");
-		btnX.setBounds(10, 102, 50, 38);
-		frmCalculadora.getContentPane().add(btnX);
+		JButton btnQuadrado = new JButton("x\u00B2");
+		btnQuadrado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				resultado = String.valueOf(calculos.quadrado(Double.parseDouble(telaPrincipal.getText())));
+				telaPrincipal.setText(tiraPontoZero(resultado));
+			}
+		});
+
+
+		btnQuadrado.setBounds(10, 102, 50, 38);
+		frmCalculadora.getContentPane().add(btnQuadrado);
 		frmCalculadora.setBounds(100, 100, 266, 386);
 		frmCalculadora.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
